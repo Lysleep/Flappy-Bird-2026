@@ -1,10 +1,13 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 1;
-
+    [SerializeField] private float rotationSpeed = 5f;
+    
+    
     private Rigidbody2D rigidbody;
     
     private void Awake()
@@ -15,8 +18,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            rigidbody.linearVelocity += Vector2.up * jumpForce;
+            rigidbody.linearVelocity = Vector2.up * jumpForce;
         }
+        
+        transform.rotation = Quaternion.Euler(0f,0f,rigidbody.linearVelocity.y*rotationSpeed);
         
     }
 }
