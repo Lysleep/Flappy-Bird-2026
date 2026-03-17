@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 1;
     [SerializeField] private float rotationSpeed = 5f;
-    
+    [SerializeField] private GameManager gameManager;
     
     private Rigidbody2D rigidbody;
     
@@ -24,4 +24,13 @@ public class PlayerBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f,0f,rigidbody.linearVelocity.y*rotationSpeed);
         
     }
+    
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+        //if (collision.GameObject == "Colisor");
+        //{
+        //    Time.timeScale = 0f;
+        //    gameManager.gameOver();
+        //}
+    //}
 }
