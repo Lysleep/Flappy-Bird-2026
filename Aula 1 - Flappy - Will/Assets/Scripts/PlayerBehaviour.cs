@@ -18,7 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            AudioManager.Instance.PlayFlyingSound();
             rigidbody.linearVelocity = Vector2.up * jumpForce;
+            
         }
         
         transform.rotation = Quaternion.Euler(0f,0f,rigidbody.linearVelocity.y*rotationSpeed);
@@ -28,10 +30,12 @@ public class PlayerBehaviour : MonoBehaviour
     //correção
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        AudioManager.Instance.PlayHitSound();
         //print ("collided with:" + collision.gameObject.name); - pa testar se ta rodando
         GameManager.Instance.GameOver(); //Instance é a variavel que guarda o codigo "GameManager" e é o que me permite referenciar
                                          //ele nesse outro codigo
         jumpForce = 0;
+        
     }
     
     //private void OnCollisionEnter2D(Collision2D collision)
